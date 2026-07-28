@@ -1,1 +1,41 @@
-error
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A public presentation of a 2025 land use and land cover classification for Hyderabad District.">
+  <title>Hyderabad LULC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="enhancements.css">
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.5.3/papaparse.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="enhancements.js" defer></script>
+</head>
+<body>
+  <header class="project-bar"><a class="project-mark" href="#map">HYD / LULC</a><p>Hyderabad District · 2025 classification</p><span class="author">Vaibhav Shivaji Nagare</span></header>
+  <main>
+    <section class="map-section" id="map" aria-labelledby="map-heading">
+      <div class="map-heading-row"><div><p class="eyebrow">Live Earth Engine App</p><h1 id="map-heading">Hyderabad LULC</h1></div><p class="map-note">If the embedded map does not appear, use the direct link.</p></div>
+      <div class="map-frame-wrap"><iframe src="https://vaibhav-gee.projects.earthengine.app/view/hyderabad-lulc" title="Hyderabad LULC Earth Engine App" loading="eager" allow="fullscreen"></iframe></div>
+      <a class="button button-primary" href="https://vaibhav-gee.projects.earthengine.app/view/hyderabad-lulc" target="_blank" rel="noopener noreferrer">Open full map in new tab <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <nav class="section-nav" aria-label="Hyderabad LULC sections"><a href="#map">Live map</a><a href="#story">Project story</a><a href="#details">Classification record</a><a href="#credits-panel">Sources</a></nav>
+    <section class="story-section" id="story" aria-labelledby="story-heading"><p class="eyebrow">Start here</p><h2 id="story-heading">Read the classified landscape, then inspect the evidence.</h2><p>This page begins with the finished 2025 classification map of Hyderabad District. The record below explains the satellite source and classifier, then exposes the exported class-area results through a chart and accessible table. The presentation keeps the map, methods, validation result, and numerical distribution together so visitors can move from the visible classification to the supplied evidence without treating the map as a claim about causes or future change.</p></section>
+
+    <section class="details-section" id="details" aria-labelledby="details-heading">
+      <div class="section-heading"><div><p class="eyebrow">Classification record</p><h2 id="details-heading">Methods, results, and source data</h2></div></div>
+      <div class="tab-list" role="tablist" aria-label="Hyderabad LULC information"><button id="tab-about" role="tab" aria-selected="true" aria-controls="panel-about" tabindex="0">About this project</button><button id="tab-chart" role="tab" aria-selected="false" aria-controls="panel-chart" tabindex="-1">Area chart</button><button id="tab-interpretation" role="tab" aria-selected="false" aria-controls="panel-interpretation" tabindex="-1">Interpretation</button><button id="tab-credits" role="tab" aria-selected="false" aria-controls="panel-credits" tabindex="-1">Credits and links</button></div>
+      <section id="panel-about" class="tab-panel" role="tabpanel" aria-labelledby="tab-about"><div class="about-grid"><article class="fact-card"><h3>Study record</h3><dl><div><dt>Study area</dt><dd>Hyderabad District</dd></div><div><dt>Year</dt><dd>2025</dd></div><div><dt>Source</dt><dd>Sentinel-2 Harmonized Surface Reflectance</dd></div><div><dt>Cloud filter</dt><dd>Below 10 percent</dd></div></dl></article><article class="fact-card"><h3>Model record</h3><dl><div><dt>Classifier</dt><dd>Random Forest</dd></div><div><dt>Trees</dt><dd class="mono">100</dd></div><div><dt>Mapped classes</dt><dd class="mono">5</dd></div><div><dt>Predictors</dt><dd>Sentinel-2 bands, NDVI, and NDWI</dd></div></dl></article><article class="accuracy-card"><p class="eyebrow">Project-supplied validation output</p><p class="accuracy-number">97.47%</p><p>Overall validation accuracy</p></article></div></section>
+      <section id="panel-chart" class="tab-panel" role="tabpanel" aria-labelledby="tab-chart" hidden><div class="chart-layout"><div class="chart-card"><h3>Mapped class area</h3><p>Area in square kilometres. Hover or focus the chart for values.</p><div class="chart-canvas-wrap"><canvas id="area-chart" aria-label="Horizontal bar chart of mapped area by LULC class" role="img"></canvas></div></div><div class="table-wrap"><table id="area-table"><caption>Class area and percentage from the exported CSV</caption><thead><tr><th scope="col">Class</th><th scope="col">Area</th><th scope="col">Share</th></tr></thead><tbody></tbody></table></div></div><p id="data-status" class="data-status" role="status" aria-live="polite"></p></section>
+      <section id="panel-interpretation" class="tab-panel" role="tabpanel" aria-labelledby="tab-interpretation" hidden><article class="interpretation-card"><h3>Classification distribution</h3><p id="interpretation-text">The interpretation will load from the exported class-area CSV.</p></article></section>
+      <section id="panel-credits" class="tab-panel" role="tabpanel" aria-labelledby="tab-credits" hidden><div class="credits-card"><h3>Sources</h3><ul><li><a href="https://vaibhav-gee.projects.earthengine.app/view/hyderabad-lulc" target="_blank" rel="noopener noreferrer">Open the Hyderabad LULC Earth Engine App</a></li><li><a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED" target="_blank" rel="noopener noreferrer">Sentinel-2 Harmonized Surface Reflectance catalog</a></li><li><a href="https://www.copernicus.eu/" target="_blank" rel="noopener noreferrer">Copernicus</a></li></ul><p id="repository-slot" hidden><a id="repository-link" target="_blank" rel="noopener noreferrer">Open project repository</a></p><p class="repo-placeholder">Repository URL placeholder: set <code>REPOSITORY_URL</code> in <code>script.js</code> before publishing.</p></div></section>
+    </section>
+  </main>
+  <footer><p>Hyderabad LULC · Data-driven charts load from the supplied export.</p><div class="social-links"><a href="https://www.linkedin.com/in/vaibhav-nagare-gis" target="_blank" rel="noopener noreferrer" aria-label="Vaibhav Nagare on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.31 8.09h4.38V23H.31zM7.42 8.09h4.2v2.04h.06c.59-1.11 2.02-2.28 4.16-2.28 4.45 0 5.27 2.93 5.27 6.74V23h-4.37v-7.44c0-1.78-.03-4.06-2.47-4.06-2.48 0-2.86 1.93-2.86 3.93V23H7.42z"/></svg><span>LinkedIn</span></a><a href="https://github.com/VaibhavNagare-GIS" target="_blank" rel="noopener noreferrer" aria-label="VaibhavNagare-GIS on GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .6a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.24c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.31-5.48-1.34-5.48-5.96 0-1.32.47-2.4 1.24-3.25-.12-.31-.54-1.54.12-3.21 0 0 1.01-.32 3.3 1.24A11.46 11.46 0 0 1 12 6.1c1.02 0 2.05.14 3.01.41 2.29-1.56 3.29-1.24 3.29-1.24.66 1.67.24 2.9.12 3.21.77.85 1.24 1.93 1.24 3.25 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .6z"/></svg><span>GitHub</span></a></div></footer>
+</body>
+</html>
