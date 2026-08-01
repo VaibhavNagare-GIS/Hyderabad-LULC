@@ -1,0 +1,6 @@
+system:index,Area_2021_km2,Area_2025_km2,Change_km2,Class_ID,Class_Name,.geo
+0,114.2427044120723,117.66878953900712,3.4260851269348223,1.0,Built-up,"{""type"":""MultiPoint"",""coordinates"":[]}"
+1,4.93625575386568,5.805946617719494,0.8696908638538137,2.0,Waterbody,"{""type"":""MultiPoint"",""coordinates"":[]}"
+2,52.36118640289492,60.0380293437645,7.676842940869577,3.0,Forest,"{""type"":""MultiPoint"",""coordinates"":[]}"
+3,7.421114102887562,2.469802519302727,-4.951311583584834,4.0,Barren Land,"{""type"":""MultiPoint"",""coordinates"":[]}"
+4,12.075226376334186,5.053919028260806,-7.02130734807338,5.0,Floating Veg,"{""type"":""MultiPoint"",""coordinates"":[]}"
