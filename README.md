@@ -80,17 +80,15 @@ Hyderabad-LULC/
 
 ## Running it locally
 
-The page fetches its data with `fetch()`, which most browsers block on a `file://` path. Serve the folder with any static server instead:
+This is a static site, but the page loads the CSV data with `fetch`, which most browsers block when a file is opened directly from disk. Serve the folder with any local web server instead.
 
 ```bash
-# Python
+git clone https://github.com/VaibhavNagare-GIS/Hyderabad-LULC.git
+cd Hyderabad-LULC
 python3 -m http.server 8000
-
-# Node
-npx serve .
 ```
 
-Then open `http://localhost:8000` (or the port shown) in your browser.
+Then open `http://localhost:8000` in your browser.
 
 ## Updating the data
 
