@@ -54,8 +54,9 @@
           <article><h3>Checking the result</h3><p>Each year's map was checked against a separate set of reference points that the model never saw during training, which is how the accuracy and kappa figures below were calculated.</p></article>
         </div>
         <div class="about-grid">
-          <article class="accuracy-card"><p class="eyebrow">2021 validation</p><p class="accuracy-number">96.01%</p><p>Overall accuracy &middot; Kappa 0.943</p></article>
-          <article class="accuracy-card"><p class="eyebrow">2025 validation</p><p class="accuracy-number">97.44%</p><p>Overall accuracy &middot; Kappa 0.963</p></article>
+          <article class="accuracy-card"><p class="eyebrow">2021 validation</p><p class="accuracy-number">96.01%</p><p class="accuracy-label">Overall accuracy</p><p class="accuracy-kappa">Kappa coefficient: 0.943</p></article>
+          <div class="accuracy-delta" aria-hidden="true"><span>&#8594;</span><span>+1.43 points</span></div>
+          <article class="accuracy-card"><p class="eyebrow">2025 validation</p><p class="accuracy-number">97.44%</p><p class="accuracy-label">Overall accuracy</p><p class="accuracy-kappa">Kappa coefficient: 0.963</p></article>
         </div>
         <details class="data-table-details">
           <summary>Open the full accuracy breakdown by class</summary>
@@ -72,11 +73,11 @@
       <div class="tab-panel" id="panel-guide" role="tabpanel" aria-labelledby="tab-guide" hidden>
         <p class="snapshot-label">What each mapped class actually means on the ground, for anyone reading the map for the first time.</p>
         <div class="notes-grid">
-          <article><h3>Built-up</h3><p class="index-fullname">Roads, roofs, and paved surfaces</p><p>Any hard, human-made surface: houses, buildings, roads, and paved open ground. This is usually the largest class in a growing city.</p></article>
-          <article><h3>Waterbody</h3><p class="index-fullname">Open water</p><p>Lakes, tanks, reservoirs, and rivers where the water surface itself is visible and clear of plant cover.</p></article>
-          <article><h3>Forest</h3><p class="index-fullname">Trees and dense green cover</p><p>Tree cover, parks, and other dense vegetation. It behaves differently from farmland or lawns because the canopy stays green for longer.</p></article>
-          <article><h3>Barren Land</h3><p class="index-fullname">Bare, exposed ground</p><p>Land with no buildings, water, or plant cover: vacant plots, construction sites before work starts, and fallow patches of soil.</p></article>
-          <article><h3>Floating Veg</h3><p class="index-fullname">Plant growth on water</p><p>Algae and floating plants such as water hyacinth sitting on the surface of a lake or tank, rather than the open water underneath.</p></article>
+          <article class="builtup"><h3>Built-up</h3><p class="index-fullname">Roads, roofs, and paved surfaces</p><p>Any hard, human-made surface: houses, buildings, roads, and paved open ground. This is usually the largest class in a growing city.</p></article>
+          <article class="waterbody"><h3>Waterbody</h3><p class="index-fullname">Open water</p><p>Lakes, tanks, reservoirs, and rivers where the water surface itself is visible and clear of plant cover.</p></article>
+          <article class="forest"><h3>Forest</h3><p class="index-fullname">Trees and dense green cover</p><p>Tree cover, parks, and other dense vegetation. It behaves differently from farmland or lawns because the canopy stays green for longer.</p></article>
+          <article class="barrenland"><h3>Barren Land</h3><p class="index-fullname">Bare, exposed ground</p><p>Land with no buildings, water, or plant cover: vacant plots, construction sites before work starts, and fallow patches of soil.</p></article>
+          <article class="floatingveg"><h3>Floating Vegetation</h3><p class="index-fullname">Plant growth on water</p><p>Algae and floating plants such as water hyacinth sitting on the surface of a lake or tank, rather than the open water underneath.</p></article>
         </div>
       </div>
     </section>
@@ -128,7 +129,9 @@
     <section class="interpretation-section" id="interpretation" aria-labelledby="interpretation-heading">
       <p class="eyebrow">The story behind the numbers</p>
       <h2 id="interpretation-heading">What actually happened on the ground, and why</h2>
-      <p id="interpretation-text">The interpretation will load shortly.</p>
+      <div id="interpretation-grid" class="insight-grid" aria-live="polite">
+        <p class="insight-loading">The interpretation will load shortly.</p>
+      </div>
     </section>
   </main>
   <footer>
