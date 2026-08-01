@@ -1,6 +1,0 @@
-system:index,area_km2,area_percent,class_id,class_name,.geo
-0,117.51324888755606,61.51351016939293,1,Built-up,"{""type"":""MultiPoint"",""coordinates"":[]}"
-1,5.8041094574102665,3.038220366746098,2,Waterbody,"{""type"":""MultiPoint"",""coordinates"":[]}"
-2,60.08072656,31.44986986023853,3,Forest,"{""type"":""MultiPoint"",""coordinates"":[]}"
-3,2.4215357600200575,1.2675776221800645,4,Barren Land,"{""type"":""MultiPoint"",""coordinates"":[]}"
-4,5.2168663808836415,2.7308219814424017,5,Floating Veg,"{""type"":""MultiPoint"",""coordinates"":[]}"
