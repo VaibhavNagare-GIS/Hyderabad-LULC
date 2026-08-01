@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A public presentation of a 2025 land use and land cover classification for Hyderabad District.">
-  <title>Hyderabad LULC</title>
+  <meta name="description" content="A public record of how Hyderabad District's land cover changed between 2021 and 2025, mapped from Sentinel-2 satellite images.">
+  <title>Hyderabad Land Change Atlas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -16,26 +16,132 @@
   <script src="enhancements.js" defer></script>
 </head>
 <body>
-  <header class="project-bar"><a class="project-mark" href="#map">HYD / LULC</a><p>Hyderabad District · 2025 classification</p><span class="author">Vaibhav Shivaji Nagare</span></header>
+  <header class="project-bar">
+    <a class="project-mark" href="#map">HYDERABAD LAND CHANGE ATLAS</a>
+    <span>Hyderabad District &middot; 2021&ndash;2025 land cover record</span>
+    <a class="button header-map-button" href="https://vaibhav-gee.projects.earthengine.app/view/hyderabad-lulc" target="_blank" rel="noopener noreferrer">Open full map in new tab <span aria-hidden="true">&#8599;</span></a>
+  </header>
   <main>
-    <section class="map-section" id="map" aria-labelledby="map-heading">
-      <div class="map-heading-row"><div><p class="eyebrow">Live Earth Engine App</p><h1 id="map-heading">Hyderabad LULC</h1></div><p class="map-note">If the embedded map does not appear, use the direct link.</p></div>
-      <div class="map-frame-wrap"><iframe src="https://vaibhav-gee.projects.earthengine.app/view/hyderabad-lulc" title="Hyderabad LULC Earth Engine App" loading="eager" allow="fullscreen"></iframe></div>
-      <a class="button button-primary" href="https://vaibhav-gee.projects.earthengine.app/view/hyderabad-lulc" target="_blank" rel="noopener noreferrer">Open full map in new tab <span aria-hidden="true">↗</span></a>
+    <section class="hero-section" id="hero" aria-labelledby="hero-heading">
+      <p class="eyebrow">Live Earth Engine App</p>
+      <h1 id="hero-heading">Hyderabad Land Change Atlas</h1>
     </section>
 
-    <nav class="section-nav" aria-label="Hyderabad LULC sections"><a href="#map">Live map</a><a href="#story">Project story</a><a href="#details">Classification record</a><a href="#credits-panel">Sources</a></nav>
-    <section class="story-section" id="story" aria-labelledby="story-heading"><p class="eyebrow">Start here</p><h2 id="story-heading">Read the classified landscape, then inspect the evidence.</h2><p>This page begins with the finished 2025 classification map of Hyderabad District. The record below explains the satellite source and classifier, then exposes the exported class-area results through a chart and accessible table. The presentation keeps the map, methods, validation result, and numerical distribution together so visitors can move from the visible classification to the supplied evidence without treating the map as a claim about causes or future change.</p></section>
+    <section class="story-section" id="start" aria-labelledby="story-heading">
+      <h2 id="story-heading">Two snapshots of Hyderabad, four years apart</h2>
+      <p>This page starts with a live satellite view of Hyderabad District, built from a computer model trained to recognise five kinds of ground cover: built-up land, water, forest and green cover, bare land, and floating plant growth on lakes. Below the map, you can compare how each of these categories looked in 2021 and again in 2025, check how reliable the model turned out to be, and read the explanation of what the numbers are actually showing and what is likely driving the change.</p>
+    </section>
 
-    <section class="details-section" id="details" aria-labelledby="details-heading">
-      <div class="section-heading"><div><p class="eyebrow">Classification record</p><h2 id="details-heading">Methods, results, and source data</h2></div></div>
-      <div class="tab-list" role="tablist" aria-label="Hyderabad LULC information"><button id="tab-about" role="tab" aria-selected="true" aria-controls="panel-about" tabindex="0">About this project</button><button id="tab-chart" role="tab" aria-selected="false" aria-controls="panel-chart" tabindex="-1">Area chart</button><button id="tab-interpretation" role="tab" aria-selected="false" aria-controls="panel-interpretation" tabindex="-1">Interpretation</button><button id="tab-credits" role="tab" aria-selected="false" aria-controls="panel-credits" tabindex="-1">Credits and links</button></div>
-      <section id="panel-about" class="tab-panel" role="tabpanel" aria-labelledby="tab-about"><div class="about-grid"><article class="fact-card"><h3>Study record</h3><dl><div><dt>Study area</dt><dd>Hyderabad District</dd></div><div><dt>Year</dt><dd>2025</dd></div><div><dt>Source</dt><dd>Sentinel-2 Harmonized Surface Reflectance</dd></div><div><dt>Cloud filter</dt><dd>Below 10 percent</dd></div></dl></article><article class="fact-card"><h3>Model record</h3><dl><div><dt>Classifier</dt><dd>Random Forest</dd></div><div><dt>Trees</dt><dd class="mono">100</dd></div><div><dt>Mapped classes</dt><dd class="mono">5</dd></div><div><dt>Predictors</dt><dd>Sentinel-2 bands, NDVI, and NDWI</dd></div></dl></article><article class="accuracy-card"><p class="eyebrow">Project-supplied validation output</p><p class="accuracy-number">97.47%</p><p>Overall validation accuracy</p></article></div></section>
-      <section id="panel-chart" class="tab-panel" role="tabpanel" aria-labelledby="tab-chart" hidden><div class="chart-layout"><div class="chart-card"><h3>Mapped class area</h3><p>Area in square kilometres. Hover or focus the chart for values.</p><div class="chart-canvas-wrap"><canvas id="area-chart" aria-label="Horizontal bar chart of mapped area by LULC class" role="img"></canvas></div></div><div class="table-wrap"><table id="area-table"><caption>Class area and percentage from the exported CSV</caption><thead><tr><th scope="col">Class</th><th scope="col">Area</th><th scope="col">Share</th></tr></thead><tbody></tbody></table></div></div><p id="data-status" class="data-status" role="status" aria-live="polite"></p></section>
-      <section id="panel-interpretation" class="tab-panel" role="tabpanel" aria-labelledby="tab-interpretation" hidden><article class="interpretation-card"><h3>Classification distribution</h3><p id="interpretation-text">The interpretation will load from the exported class-area CSV.</p></article></section>
-      <section id="panel-credits" class="tab-panel" role="tabpanel" aria-labelledby="tab-credits" hidden><div class="credits-card"><h3>Sources</h3><ul><li><a href="https://vaibhav-gee.projects.earthengine.app/view/hyderabad-lulc" target="_blank" rel="noopener noreferrer">Open the Hyderabad LULC Earth Engine App</a></li><li><a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED" target="_blank" rel="noopener noreferrer">Sentinel-2 Harmonized Surface Reflectance catalog</a></li><li><a href="https://www.copernicus.eu/" target="_blank" rel="noopener noreferrer">Copernicus</a></li></ul><p id="repository-slot" hidden><a id="repository-link" target="_blank" rel="noopener noreferrer">Open project repository</a></p><p class="repo-placeholder">Repository URL placeholder: set <code>REPOSITORY_URL</code> in <code>script.js</code> before publishing.</p></div></section>
+    <section class="map-section" id="map" aria-label="Live map, 2025 conditions">
+      <p class="ticker" aria-label="Page guide"><span>This live map shows the 2025 classification in detail. Scroll down to compare it with 2021 and read what changed and why.</span></p>
+      <div class="map-frame-wrap"><iframe src="https://vaibhav-gee.projects.earthengine.app/view/hyderabad-lulc" title="Hyderabad Land Change Atlas Earth Engine App" loading="eager" allow="fullscreen"></iframe></div>
+    </section>
+
+    <section class="snapshot-section" id="snapshot" aria-labelledby="snapshot-heading">
+      <p class="eyebrow">About this project</p>
+      <h2 id="snapshot-heading">How this map was built</h2>
+      <div class="tab-row tab-row-compact" role="tablist" aria-label="Project background views">
+        <button type="button" class="tab-button" role="tab" aria-selected="true" aria-controls="panel-study" id="tab-study">Study details</button>
+        <button type="button" class="tab-button" role="tab" aria-selected="false" aria-controls="panel-guide" id="tab-guide">Class guide</button>
+      </div>
+      <div class="tab-divider"></div>
+
+      <div class="tab-panel" id="panel-study" role="tabpanel" aria-labelledby="tab-study">
+        <p class="snapshot-label">Hyderabad District covers about 217 square kilometres and had a population of 3,943,323 at the 2011 census, according to the Telangana state government. The classified area in this study comes to roughly 191 square kilometres in both years; the remaining ground was excluded where cloud cover kept the satellite from getting a clear view.</p>
+        <div class="layer-grid">
+          <article><h3>Satellite source</h3><p>Both years use Sentinel-2 Harmonized Surface Reflectance images, kept to scenes with less than 10 percent cloud cover so the classification is based on a clear view of the ground.</p></article>
+          <article><h3>Classification method</h3><p>A Random Forest model with 100 decision trees was trained to sort every pixel into one of five ground cover classes, using surface colour bands, short-wave infrared bands, and two vegetation and water indices as inputs.</p></article>
+          <article><h3>Checking the result</h3><p>Each year's map was checked against a separate set of reference points that the model never saw during training, which is how the accuracy and kappa figures below were calculated.</p></article>
+        </div>
+        <div class="about-grid">
+          <article class="accuracy-card"><p class="eyebrow">2021 validation</p><p class="accuracy-number">96.01%</p><p>Overall accuracy &middot; Kappa 0.943</p></article>
+          <article class="accuracy-card"><p class="eyebrow">2025 validation</p><p class="accuracy-number">97.44%</p><p>Overall accuracy &middot; Kappa 0.963</p></article>
+        </div>
+        <details class="data-table-details">
+          <summary>Open the full accuracy breakdown by class</summary>
+          <div class="table-wrap">
+            <table id="accuracy-table">
+              <caption>Producer's and user's accuracy by class, calculated from the validation error matrix for each year</caption>
+              <thead><tr><th scope="col">Class</th><th scope="col">2021 producer's</th><th scope="col">2021 user's</th><th scope="col">2025 producer's</th><th scope="col">2025 user's</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+
+      <div class="tab-panel" id="panel-guide" role="tabpanel" aria-labelledby="tab-guide" hidden>
+        <p class="snapshot-label">What each mapped class actually means on the ground, for anyone reading the map for the first time.</p>
+        <div class="notes-grid">
+          <article><h3>Built-up</h3><p class="index-fullname">Roads, roofs, and paved surfaces</p><p>Any hard, human-made surface: houses, buildings, roads, and paved open ground. This is usually the largest class in a growing city.</p></article>
+          <article><h3>Waterbody</h3><p class="index-fullname">Open water</p><p>Lakes, tanks, reservoirs, and rivers where the water surface itself is visible and clear of plant cover.</p></article>
+          <article><h3>Forest</h3><p class="index-fullname">Trees and dense green cover</p><p>Tree cover, parks, and other dense vegetation. It behaves differently from farmland or lawns because the canopy stays green for longer.</p></article>
+          <article><h3>Barren Land</h3><p class="index-fullname">Bare, exposed ground</p><p>Land with no buildings, water, or plant cover: vacant plots, construction sites before work starts, and fallow patches of soil.</p></article>
+          <article><h3>Floating Veg</h3><p class="index-fullname">Plant growth on water</p><p>Algae and floating plants such as water hyacinth sitting on the surface of a lake or tank, rather than the open water underneath.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="historical-title" id="historical"><p class="eyebrow">Two years, one landscape</p><h2 id="historical-heading">What changed between 2021 and 2025</h2></div>
+    <section class="historical-section" aria-labelledby="historical-heading">
+      <div class="tab-row" role="tablist" aria-label="Change data sections">
+        <button type="button" class="tab-button" role="tab" aria-selected="true" aria-controls="panel-chart" id="tab-chart">Area chart</button>
+        <button type="button" class="tab-button" role="tab" aria-selected="false" aria-controls="panel-change" id="tab-change">Class by class change</button>
+        <button type="button" class="tab-button" role="tab" aria-selected="false" aria-controls="panel-sources" id="tab-sources">Sources</button>
+      </div>
+      <div class="tab-divider"></div>
+
+      <div class="tab-panel" id="panel-chart" role="tabpanel" aria-labelledby="tab-chart">
+        <div class="chart-intro"><h3>Mapped area by class, 2021 vs 2025</h3><p class="chart-caption">Each pair of bars compares the same class across the two years, in square kilometres.</p></div>
+        <div class="chart-frame"><canvas id="area-chart" role="img" aria-label="Grouped bar chart comparing mapped area by land cover class in 2021 and 2025"></canvas></div>
+        <p id="data-status" class="data-status" role="status" aria-live="polite"></p>
+        <details class="data-table-details">
+          <summary>Open accessible class area data table</summary>
+          <div class="table-wrap">
+            <table id="area-table">
+              <caption>Class area and share of the classified area, calculated from the actual satellite-derived data for each year</caption>
+              <thead><tr><th scope="col">Class</th><th scope="col">2021 area</th><th scope="col">2021 share</th><th scope="col">2025 area</th><th scope="col">2025 share</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+
+      <div class="tab-panel" id="panel-change" role="tabpanel" aria-labelledby="tab-change" hidden>
+        <h3>First-to-latest change, by class</h3>
+        <p class="section-lede">Each card compares 2021 with 2025 for one class, calculated directly from the mapped area in each year, so you can see how much ground moved between categories.</p>
+        <div id="change-cards" class="change-grid"></div>
+      </div>
+
+      <div class="tab-panel" id="panel-sources" role="tabpanel" aria-labelledby="tab-sources" hidden>
+        <h3>Credits and links</h3>
+        <ul>
+          <li><a href="https://vaibhav-gee.projects.earthengine.app/view/hyderabad-lulc" target="_blank" rel="noopener noreferrer">Open the Hyderabad Land Change Atlas Earth Engine App</a></li>
+          <li><a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED" target="_blank" rel="noopener noreferrer">Sentinel-2 Harmonized Surface Reflectance catalog</a></li>
+          <li><a href="https://www.copernicus.eu/" target="_blank" rel="noopener noreferrer">Copernicus</a></li>
+          <li><a href="https://hyderabad.telangana.gov.in/about-district/" target="_blank" rel="noopener noreferrer">Hyderabad District profile, Government of Telangana</a></li>
+        </ul>
+        <p id="repository-slot" hidden><a id="repository-link" target="_blank" rel="noopener noreferrer">Open project repository</a></p>
+        <p class="repo-placeholder">Repository URL placeholder: set <code>REPOSITORY_URL</code> in <code>script.js</code> before publishing.</p>
+      </div>
+    </section>
+
+    <section class="interpretation-section" id="interpretation" aria-labelledby="interpretation-heading">
+      <p class="eyebrow">The story behind the numbers</p>
+      <h2 id="interpretation-heading">What actually happened on the ground, and why</h2>
+      <p id="interpretation-text">The interpretation will load shortly.</p>
     </section>
   </main>
-  <footer><p>Hyderabad LULC · Data-driven charts load from the supplied export.</p><div class="social-links"><a href="https://www.linkedin.com/in/vaibhav-nagare-gis" target="_blank" rel="noopener noreferrer" aria-label="Vaibhav Nagare on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.31 8.09h4.38V23H.31zM7.42 8.09h4.2v2.04h.06c.59-1.11 2.02-2.28 4.16-2.28 4.45 0 5.27 2.93 5.27 6.74V23h-4.37v-7.44c0-1.78-.03-4.06-2.47-4.06-2.48 0-2.86 1.93-2.86 3.93V23H7.42z"/></svg><span>LinkedIn</span></a><a href="https://github.com/VaibhavNagare-GIS" target="_blank" rel="noopener noreferrer" aria-label="VaibhavNagare-GIS on GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .6a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.24c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.31-5.48-1.34-5.48-5.96 0-1.32.47-2.4 1.24-3.25-.12-.31-.54-1.54.12-3.21 0 0 1.01-.32 3.3 1.24A11.46 11.46 0 0 1 12 6.1c1.02 0 2.05.14 3.01.41 2.29-1.56 3.29-1.24 3.29-1.24.66 1.67.24 2.9.12 3.21.77.85 1.24 1.93 1.24 3.25 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .6z"/></svg><span>GitHub</span></a></div></footer>
+  <footer>
+    <div class="footer-row">
+      <div class="footer-identity">
+        <p class="footer-name">Vaibhav Shivaji Nagare</p>
+        <p class="footer-tagline">Made by one geoinformatics student, comparing two years of satellite images so a city's changes are easier to see.</p>
+      </div>
+      <div class="social-links">
+        <a href="https://github.com/VaibhavNagare-GIS" target="_blank" rel="noopener noreferrer" aria-label="VaibhavNagare-GIS on GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .6a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.24c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.31-5.48-1.34-5.48-5.96 0-1.32.47-2.4 1.24-3.25-.12-.31-.54-1.54.12-3.21 0 0 1.01-.32 3.3 1.24A11.46 11.46 0 0 1 12 6.1c1.02 0 2.05.14 3.01.41 2.29-1.56 3.29-1.24 3.29-1.24.66 1.67.24 2.9.12 3.21.77.85 1.24 1.93 1.24 3.25 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .6z"/></svg><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/vaibhav-nagare-gis" target="_blank" rel="noopener noreferrer" aria-label="Vaibhav Nagare on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.31 8.09h4.38V23H.31zM7.42 8.09h4.2v2.04h.06c.59-1.11 2.02-2.28 4.16-2.28 4.45 0 5.27 2.93 5.27 6.74V23h-4.37v-7.44c0-1.78-.03-4.06-2.47-4.06-2.48 0-2.86 1.93-2.86 3.93V23H7.42z"/></svg><span>LinkedIn</span></a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
